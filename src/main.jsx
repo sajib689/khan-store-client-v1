@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Router/Router.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div className="font-montFont bg-gradient-to-r from-blue-200 to-cyan-200">
+  <div className="font-montFont bg-gradient-to-r from-blue-100 to-cyan-100">
     <RouterProvider router={router}>
     <App />
     </RouterProvider>
