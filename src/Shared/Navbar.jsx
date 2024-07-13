@@ -53,7 +53,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 font-semibold">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link className="btn bg-gradient-to-r from-blue-200 to-cyan-200 hover:bg-bg-gradient-to-r from-blue-200 to-cyan-400">Login</Link>
       </div>
     </div>
   );
