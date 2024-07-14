@@ -5,44 +5,48 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 import PopularCategoryCard from "../Components/PopularCategoryCard";
 
 const PopularProduct = () => {
-  // here we call the public api
+  // Initialize Axios instance from custom hook
   const axiosPublic = useAxiosPublic();
-  // we set a state for data store
+  // State to store categories data
   const [cateGories, setCateGories] = useState([]);
-  // category slider breakpoints
+
+  // Carousel breakpoints configuration
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 6,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 5,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 3,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
     },
   };
-  // fetch the data from the server
+
+  // Fetch data from the server on component mount
   useEffect(() => {
-    axiosPublic.get("/popularProducts").then((res) => {
-      setCateGories(res.data);
-    });
+    axiosPublic.get("/popularProducts")
+      .then((res) => {
+        setCateGories(res.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching popular products:", error);
+      });
   }, [axiosPublic]);
+
   return (
-    <div>
+    <div className="mt-48 mb-48 container mx-auto ms-12">
       <Carousel responsive={responsive}>
-        <div>
-          {cateGories.map((category) => (
-            <PopularCategoryCard key={category._id} category={category} />
-          ))}
-        </div>
+        {cateGories.map((categoryy) => (
+          <PopularCategoryCard key={categoryy._id} categoryy={categoryy} />
+        ))}
       </Carousel>
     </div>
   );
